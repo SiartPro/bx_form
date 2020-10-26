@@ -12,6 +12,7 @@ use Bitrix\Main\Mail\Event;
 use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Page\AssetLocation;
 
+Loader::includeModule('iblock');
 
 /**
  * Class CSiartSimpleForm
