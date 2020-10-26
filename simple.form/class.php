@@ -12,8 +12,6 @@ use Bitrix\Main\Mail\Event;
 use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Page\AssetLocation;
 
-Loader::includeModule('dk.helper');
-
 
 /**
  * Class CSiartSimpleForm
@@ -51,7 +49,7 @@ class CSiartSimpleForm extends CBitrixComponent
         global $APPLICATION;
 
         // поле 'HIDDEN' для идентификации компонента
-        $this->arResult['HIDDEN'] = md5(implode('', $this->arParams));
+        $this->arResult['HIDDEN'] = md5(implode('', $this->arParams) . __CLASS__);
         $this->arResult['ERROR'] = array();
 
         // установка кода рекапчи
