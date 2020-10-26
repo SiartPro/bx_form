@@ -29,8 +29,8 @@
 В ответ на "AJAX" запрос компонент отдаст JSON следующего содержания:
 ```json
 {
-  "STATUS": false, // true или false
-  "ERROR": [ // массив ошибок если STATUS -> false
+  "STATUS": false,
+  "ERROR": [
     "asdasd",
     "sdfsdf"
   ]
