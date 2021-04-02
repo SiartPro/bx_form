@@ -31,7 +31,7 @@ class CSiartSimpleForm extends CBitrixComponent
         $arParams['INCLUDE_URL'] = ($arParams['INCLUDE_URL'] == 'Y');
         $arParams['IS_NEED_RE_CAPTCHA'] = (!empty($arParams['RE_CAPTCHA_SITE_KEY']) && !empty($arParams['RE_CAPTCHA_SECRET_KEY']));
         $arParams['RE_CAPTCHA_SCORE'] = (float)$arParams['RE_CAPTCHA_SCORE'];
-        if ($arParams['RE_CAPTCHA_SCORE'] <= 0) $arParams['RE_CAPTCHA_SCORE'] = 10;
+        if ($arParams['RE_CAPTCHA_SCORE'] <= 0) $arParams['RE_CAPTCHA_SCORE'] = 0;
         $arParams['IBLOCK_FIELDS'] = array(
             'SORT',
             'PREVIEW_TEXT',
