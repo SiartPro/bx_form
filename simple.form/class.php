@@ -30,8 +30,9 @@ class CSiartSimpleForm extends CBitrixComponent
         if (empty($arParams['TITLE'])) $arParams['TITLE'] = 'Заполнена форма';
         $arParams['INCLUDE_URL'] = ($arParams['INCLUDE_URL'] == 'Y');
         $arParams['IS_NEED_RE_CAPTCHA'] = (!empty($arParams['RE_CAPTCHA_SITE_KEY']) && !empty($arParams['RE_CAPTCHA_SECRET_KEY']));
+        $arParams['RE_CAPTCHA_SCORE'] = (float)$arParams['RE_CAPTCHA_SCORE'];
+        if ($arParams['RE_CAPTCHA_SCORE'] <= 0) $arParams['RE_CAPTCHA_SCORE'] = 10;
         $arParams['IBLOCK_FIELDS'] = array(
-            'NAME',
             'SORT',
             'PREVIEW_TEXT',
             'DETAIL_TEXT',
@@ -72,7 +73,7 @@ class CSiartSimpleForm extends CBitrixComponent
                 $arResponse = json_decode($response, true);
 
                 // рекапча не прошла проверку
-                if (!$arResponse['success']) {
+                if (!$arResponse['success'] && $arResponse['score'] >= $this->arParams['RE_CAPTCHA_SCORE']) {
                     $isOk = false;
                     $this->arResult['ERROR'][] = 'Ошибка recaptcha';
                 }
