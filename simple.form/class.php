@@ -73,7 +73,7 @@ class CSiartSimpleForm extends CBitrixComponent
                 $arResponse = json_decode($response, true);
 
                 // рекапча не прошла проверку
-                if (!$arResponse['success'] && $arResponse['score'] >= $this->arParams['RE_CAPTCHA_SCORE']) {
+                if (!$arResponse['success'] || ($arResponse['score'] < $this->arParams['RE_CAPTCHA_SCORE'])) {
                     $isOk = false;
                     $this->arResult['ERROR'][] = 'Ошибка recaptcha';
                 }
